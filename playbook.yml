@@ -3,5 +3,5 @@
   tasks:
   - name: Uninstall docker on the test server 
     yum: name=docker state=absent
-  #- name: Stop docker service
-   # service: name=docker state=stopped
+  - name: Stop docker service
+    service: name=docker state=stopped
