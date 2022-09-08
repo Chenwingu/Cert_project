@@ -2,7 +2,7 @@
   become: true
   tasks:
   - name: Clone the repository
-    git: repo=https://github.com/nguchen/CertProject.git dest=/tmp/git_repository
+    git: repo=https://github.com/nguchen/DevOpsCertProject.git dest=/tmp/git_repository
   - name: Build a customize image from the dockerfile 
     command: chdir=/tmp/git_repository docker build -t webapp-image .
   - name: Run the customize image to container
