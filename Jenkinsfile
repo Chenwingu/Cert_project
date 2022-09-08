@@ -6,7 +6,7 @@ pipeline {
         stage('SCM Checkout') 
         {
           steps {
-          git 'https://github.com/nguchen/CertProject.git'
+          git 'https://github.com/nguchen/DevOpsCertProject.git'
           }
         }
         stage('Execute Ansible playbook')
@@ -18,7 +18,7 @@ pipeline {
        stage('Docker Deploy using Ansible playbook')
        {
           steps {
-          ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'dockerplaybook.yml'
+          ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'Deploy-docker.yml'
           }
        }
   }
