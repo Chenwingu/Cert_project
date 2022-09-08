@@ -12,13 +12,13 @@ pipeline {
         stage('Execute Ansible playbook')
        {
           steps {
-          ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'playbook.yml'
+          ansiblePlaybook credentialsId: 'jenkisnslave', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'playbook.yml'
           }
        }
          stage('Docker Deploy using Ansible playbook')
        {
           steps {
-         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'Deploy-docker.yml'
+         ansiblePlaybook credentialsId: 'jenkisnslave', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'Deploy-docker.yml'
           }
        }
   }
