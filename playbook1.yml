@@ -1,0 +1,19 @@
+- hosts: 172.31.37.53
+  become: true
+  tasks:
+  - name: Copy private ip and private hostname of Puppet master
+    copy: src=172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal dest=/etc/hosts
+  - name: Download puppet package
+    yum:
+      name: rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+      state: present
+  - name: Install puppet agent
+    yum:
+      name: puppet-agent 
+      state: present
+  - name: Copy Puppet master's hostname
+    copy: src=server=ip-172-31-43-129.us-east-2.compute.internal dest=/etc/puppetlabs/puppet/puppet.conf
+  - name: Enable Puppet
+    systemd:
+      name: puppet
+      enabled: yes
