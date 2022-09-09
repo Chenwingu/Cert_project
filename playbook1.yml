@@ -2,7 +2,7 @@
   become: true
   become_user: root
   tasks:
-  - name: Add private ip and private hostname of Puppet master
+  #- name: Add private ip and private hostname of Puppet master
     blockinfile:
       path: /etc/hosts
       block: |
@@ -15,7 +15,7 @@
     yum:
       name: puppet
       state: absent
-  - name: Add Puppet master's hostname
+  #- name: Add Puppet master's hostname
     blockinfile:
       path: /etc/puppetlabs/puppet/puppet.conf
       block: |
