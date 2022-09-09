@@ -9,7 +9,7 @@
       state: present
   - name: Install puppet agent
     yum:
-      name: puppet-agent 
+      name: puppet 
       state: present
   - name: Copy Puppet master's hostname
     copy: src=server=ip-172-31-43-129.us-east-2.compute.internal dest=/etc/puppetlabs/puppet/puppet.conf
