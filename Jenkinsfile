@@ -9,10 +9,10 @@ pipeline {
           git 'https://github.com/nguchen/DevOpsCertProject.git'
           }
         }
-        stage('Execute Ansible playbook')
+        stage('Install puppetClient_docker')
        {
           steps {
-          ansiblePlaybook credentialsId: 'jenkisnslave', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'playbook.yml'
+          ansiblePlaybook credentialsId: 'jenkisnslave', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'dev.inv', playbook: 'Puppet_docker_playbook.yml'
           }
        }
          stage('Docker Deploy using Ansible playbook')
