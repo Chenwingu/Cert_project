@@ -3,12 +3,12 @@
   become_user: root
   tasks:
     - name: Add private ip and private hostname of Puppet master
-      file: "path=/etc/hosts" "state=add" "mode=172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal"
+      file: "path=/etc/hosts state=add mode=172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal
     - name: Download puppet package
       yum: name=rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm state=present
     - name: Install puppet agent
       yum: name=puppet state=present
     - name: Add Puppet master's hostname
-      file: "path=/etc/puppetlabs/puppet/puppet.conf" "state=add" "mode=server=ip-172-31-43-129.us-east-2.compute.internal"
+      file: "path=/etc/puppetlabs/puppet/puppet.conf state=add mode=server=ip-172-31-43-129.us-east-2.compute.internal"
     - name: Enable Puppet
       systemd: name=puppet enabled=yes
