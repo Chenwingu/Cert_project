@@ -2,12 +2,12 @@
   become: true
   tasks:
   - name: Add private ip and private hostname of Puppet master
-    lineinfile: path=/etc/hosts line=172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal
+    shell: vim "/etc/hosts" add "172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal"
   - name: Download puppet package
     yum: rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
   - name: Install puppet agent
     yum: name=puppet state=present
   - name: Add Puppet master's hostname
-    lineinfile: path=/etc/puppetlabs/puppet/puppet.conf line=server=ip-172-31-43-129.us-east-2.compute.internal
+    shell: vim "/etc/puppetlabs/puppet/puppet.conf" add "server=ip-172-31-43-129.us-east-2.compute.internal"
   - name: Enable Puppet
     systemd: name=puppet enabled=yes
