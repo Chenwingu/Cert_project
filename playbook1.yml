@@ -1,5 +1,6 @@
 - hosts: 172.31.37.53
   become: true
+  become_user: root
   tasks:
     - name: Add private ip and private hostname of Puppet master
       shell: 
