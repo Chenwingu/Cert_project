@@ -1,17 +1,17 @@
 - hosts: 172.31.37.53
   become: true
   tasks:
-  - name: Add private ip and private hostname of Puppet master
-    shell: 
+    - name: Add private ip and private hostname of Puppet master
+      shell: 
        vim /etc/hosts 
-       add 172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal
-  - name: Download puppet package
-    ansible.builtin.yum: name=rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm state=present
-  - name: Install puppet agent
-    yum: name=puppet state=present
-  - name: Add Puppet master's hostname
-    shell: 
+       add '172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal'
+    - name: Download puppet package
+      yum: name=rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm state=present
+    - name: Install puppet agent
+      yum: name=puppet state=present
+    - name: Add Puppet master's hostname
+      shell: 
         vim /etc/puppetlabs/puppet/puppet.conf 
-        add server=ip-172-31-43-129.us-east-2.compute.internal
-  - name: Enable Puppet
-    systemd: name=puppet enabled=yes
+        add 'server=ip-172-31-43-129.us-east-2.compute.internal'
+    - name: Enable Puppet
+      systemd: name=puppet enabled=yes
