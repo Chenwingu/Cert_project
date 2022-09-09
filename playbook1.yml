@@ -10,11 +10,11 @@
   - name: Download puppet package
     yum:
       name: https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
-      state: present
+      state: absent
   - name: Install puppet agent
     yum:
       name: puppet
-      state: present
+      state: absent
   - name: Add Puppet master's hostname
     blockinfile:
       path: /etc/puppetlabs/puppet/puppet.conf
@@ -23,4 +23,4 @@
   - name: Enable Puppet
     systemd:
       name: puppet
-      enabled: yes
+      enabled: no
