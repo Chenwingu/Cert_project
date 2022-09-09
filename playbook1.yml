@@ -2,11 +2,6 @@
   become: true
   become_user: root
   tasks:
-  - name: Add private ip and private hostname of Puppet master
-    blockinfile:
-      path: /etc/hosts
-      block: |
-          172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal
   - name: Download puppet package
     yum:
       name: https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
@@ -15,11 +10,6 @@
     yum:
       name: puppet
       state: absent
-  - name: Add Puppet master's hostname
-    blockinfile:
-      path: /etc/puppetlabs/puppet/puppet.conf
-      block: |
-          server=ip-172-31-43-129.us-east-2.compute.internal
   - name: Enable Puppet
     systemd:
       name: puppet
