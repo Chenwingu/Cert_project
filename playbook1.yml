@@ -7,7 +7,8 @@
        line: 172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal
   - name: Download puppet package
     yum:
-      name: rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+      name: https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+      name: rpm -Uvh puppet5-release-el-7.noarch.rpm
       state: present
   - name: Install puppet agent
     yum:
