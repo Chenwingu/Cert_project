@@ -2,9 +2,11 @@
   become: true
   tasks:
   - name: Add private ip and private hostname of Puppet master
-    shell: vim "/etc/hosts" add "172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal"
+    shell: 
+       vim /etc/hosts 
+       add 172.31.43.129 ip-172-31-43-129.us-east-2.compute.internal
   - name: Download puppet package
-    wget: https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+    ansible.builtin.yum: name=rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm state=present
   - name: Install puppet agent
     yum: name=puppet state=present
   - name: Add Puppet master's hostname
