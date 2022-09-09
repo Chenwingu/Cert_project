@@ -10,7 +10,4 @@
     yum:
       name: puppet
       state: absent
-  - name: Enable Puppet
-    systemd:
-      name: puppet
-      enabled: no
+  
