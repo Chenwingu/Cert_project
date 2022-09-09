@@ -10,8 +10,7 @@
   - name: Download puppet package
     yum:
       name: 
-        - rpm -Uvh
-        - https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+        - rpm -Uvh, https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
       state: present
   - name: Install puppet agent
     yum:
