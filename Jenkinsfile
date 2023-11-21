@@ -6,7 +6,7 @@ pipeline {
         stage('SCM Checkout') 
         {
           steps {
-          git 'https://github.com/nguchen/DevOpsCertProject.git'
+          git 'https://github.com/Chenwi/DevOpsCertProject.git'
           }
         }
         stage('Install puppetClient_docker')
